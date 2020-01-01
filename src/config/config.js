@@ -10,7 +10,7 @@ conn = mysql.createConnection({
 
 conn.connect((err) => {
     if(err) 
-        console.log("the database error: ", error);
+        console.log("the database error: ", err);
     else    
         console.log("the database connected");
 });
