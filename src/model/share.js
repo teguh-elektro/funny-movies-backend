@@ -3,7 +3,7 @@ const conn = require('../config/config')
 module.exports = {
     readMovie: async() => {
         return new Promise((resolve, reject) => {
-            conn.query(`SELECT sh.link, sh.likes, sh.unlikes, us.email FROM share AS sh 
+            conn.query(`SELECT sh.id, sh.title, sh.description, sh.link, sh.likes, sh.unlikes, us.email FROM share AS sh 
             LEFT JOIN user AS us ON sh.user_id = us.id 
             ORDER BY sh.update_date DESC LIMIT 50;`,
             (err, result) => {

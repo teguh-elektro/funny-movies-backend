@@ -15,7 +15,9 @@ module.exports = {
         try{
             const {
                 link,
-                id
+                id,
+                title,
+                description
             } = req.body;
 
             const body = {
@@ -25,11 +27,15 @@ module.exports = {
                 update_date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
                 likes: 0,
                 unlikes: 0,
+                title,
+                description
             };
+            console.log(body);
+            
             const result = await shareModel.addMovie(body);
             response(res, 200, {message: "the user is added"})
         }catch(error){
-            response(res, 200, {message: "the user was there"})
+            response(res, 200, {message: "the user was there", error:error})
         }
     },
     updateMovie: async(req, res) => {
